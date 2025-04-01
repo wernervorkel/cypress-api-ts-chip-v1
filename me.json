@@ -1,0 +1,44 @@
+{
+  "name": "Werner",
+  "last_name": "Vorkel",
+  "linkedin": "https://www.linkedin.com/in/werner-v-1629b931/",
+  "skills": [
+    "Cypress",
+    "TypeScript",
+    "JavaScript",
+    "Cucumber",
+    "API Testing",
+    "CI/CD",
+    "Git",
+    "Postman",
+    "K6",
+    "Carpentry",
+    "Plumbing Basics",
+    "Painting",
+    "Gardening",
+    "Vehicle Maintenance"
+  ],
+  "traits": {
+    "detail_oriented": true,
+    "problem_solver": true,
+    "collaborative": true,
+    "resourceful": true,
+    "practical": true,
+    "patient": true,
+    "curious": true,
+    "creative": true
+  },
+  "hobbies": [
+    "home repairs",
+    "electronics tinkering",
+    "gardening",
+    "basketball",
+    "gaming",
+    "hiking",
+    "eating",
+    "Trading Card Game",
+    "board games"
+  ],
+  "favorite_tool": "Cypress (for work), cordless drill (for DIY)",
+  "motto": "Build it, Test it, Make it work"
+}

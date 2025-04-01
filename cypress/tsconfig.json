@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "types": ["cypress", "node", "@badeball/cypress-cucumber-preprocessor", "xml2js"],
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
+    "paths": {
+      "@api/*": ["api/*"],
+      "@types/*": ["types/*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "e2e/**/*.feature"
+  ]
+}
