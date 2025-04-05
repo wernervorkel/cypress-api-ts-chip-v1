@@ -1,6 +1,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { parseStringPromise } from "xml2js";
 import { validateJsonSchema } from "../../schemas/jsonSchema";
+import { validateXmlSchema } from "../../schemas/xmlSchema";
 
 const aliasMap: { [key: string]: string } = {};
 
@@ -84,7 +85,7 @@ Then("the response schema should be valid", () => {
       if (format === "json") {
         cy.wrap(validateJsonSchema(response.body)).should("be.true");
       } else if (format === "xml") {
-        //cy.wrap(validateXmlSchema(response.body)).should('be.true');
+        cy.wrap(validateXmlSchema(response.body)).should('be.true');
       } else {
         cy.log("Schema validation skipped for plain text format");
       }
