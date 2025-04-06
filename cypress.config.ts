@@ -57,7 +57,7 @@ const envConfig = getEnvironment(envName);
 export default defineConfig({
   e2e: {
     baseUrl: envConfig.baseUrl,
-    specPattern: "**/*.feature",
+    specPattern: "cypress/e2e/**/*.feature",
     supportFile: 'cypress/support/e2e.ts',
     setupNodeEvents,
     video: false,

@@ -1,25 +1,31 @@
+// cypress/schemas/validateXmlSchema.ts
 import { DOMParser } from "xmldom";
-import { select } from "xpath";
 
 export const validateXmlSchema = (xmlString: string): boolean => {
-  const doc = new DOMParser().parseFromString(xmlString);
-
-  const responseNode = select("/response", doc) as Node[];
-  if (responseNode.length !== 1) {
-    throw new Error("XML must contain exactly one <response> root element");
+  console.log("XML Input:", xmlString);
+  const doc = new DOMParser().parseFromString(xmlString, "text/xml");
+  if (doc.documentElement.nodeName === "parsererror") {
+    throw new Error("Invalid XML: " + xmlString);
   }
 
-  const stringNode = select("/response/string", doc) as Node[];
-  const errorNode = select("/response/error", doc) as Node[];
-
-  const hasString = stringNode.length === 1;
-  const hasError = errorNode.length === 1;
-
-  if (hasString && hasError) {
-    throw new Error("XML must contain either <string> or <error>, not both");
+  // Check root is PurgoMalum
+  const root = doc.documentElement;
+  if (root.nodeName !== "PurgoMalum") {
+    throw new Error("XML must have <PurgoMalum> as root element");
   }
-  if (!hasString && !hasError) {
-    throw new Error("XML must contain either <string> or <error>");
+
+  // Check for result or error child
+  const children = Array.from(root.childNodes).filter((node) => node.nodeType === 1); // Element nodes only
+  const hasResult = children.some((node) => node.nodeName === "result");
+  const hasError = children.some((node) => node.nodeName === "error");
+
+  console.log("Has Result:", hasResult, "Has Error:", hasError);
+
+  if (hasResult && hasError) {
+    throw new Error("XML must contain either <result> or <error>, not both");
+  }
+  if (!hasResult && !hasError) {
+    throw new Error("XML must contain either <result> or <error>");
   }
 
   return true;
