@@ -32,8 +32,8 @@ jobs:
           start: ""
           wait-on-timeout: 120
           spec: cypress/e2e/api/purgoMalum.feature
-          record: true
-          parallel: true
+          # record: true #need to setup cypress.io config to use parallel testing
+          # parallel: true
 
       # Step 5: Upload test artifacts if Cypress fails
       - name: Upload Cypress artifacts
